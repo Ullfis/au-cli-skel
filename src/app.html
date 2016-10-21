@@ -1,32 +1,10 @@
 <template>
-  <md-navbar>
-    <a href="#/samples/navbar" class="brand-logo"><span>Brand logo</span></a>
-    <ul class="hide-on-med-and-down right">
-      <li md-waves><a>About</a></li>
-      <li md-waves><a>Installation</a></li>
-      <li md-waves><a md-sidenav-collapse="ref.bind: sideNav;" md-button md-waves><i class="fa fa-camera-retro"></i></a></li>
-    </ul>
-  </md-navbar>  
-  <md-navbar>
-    <form>
-      <div class="input-field">
-        <input id="search" type="search" required>
-        <label for="search"><i class="material-icons"></i></label>
-        <i class="material-icons">close</i>
-      </div>
-    </form>
-  </md-navbar>
-  <md-sidenav view-model.ref="sideNav">
-    <ul>
-      <li md-waves><a href="#">About</a></li>
-      <li md-waves><a href="#">Installation</a></li>
-      <li md-waves><a href="#">Project Status</a></li>
-      <li md-waves><a href="#">Help/Docs</a></li>
-    </ul>
-  </md-sidenav>
-  <h1>${message}</h1>    
-  <div class="button-row">
-    <button md-button md-waves><i class="left material-icons">mode_edit</i>I'm a basic button</button>
-    <button md-button="flat: true;" md-waves>I'm a flat button</button>
-  </div>  
+  <require from="./nav-bar.html"></require>
+  <md-colors md-primary-color="#52ae6e" md-accent-color="#429e5e"></md-colors>
+
+  <nav-bar router.bind="router"></nav-bar>
+
+  <div>
+    <router-view></router-view>
+  </div>
 </template>

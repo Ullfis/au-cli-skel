@@ -9,10 +9,12 @@ import environment from './environment';
   }
 });
 
-export function configure(aurelia: Aurelia) {
+export async function configure(aurelia: Aurelia) {
   aurelia.use
     .standardConfiguration()
-    .feature('resources');
+    .feature('resources')
+    .plugin('aurelia-validation')
+    .plugin('aurelia-materialize-bridge', b => b.useAll());
 
   if (environment.debug) {
     aurelia.use.developmentLogging();
@@ -22,9 +24,6 @@ export function configure(aurelia: Aurelia) {
     aurelia.use.plugin('aurelia-testing');
   }
 
-  aurelia.use
-    .plugin('aurelia-validation')
-    .plugin('aurelia-materialize-bridge', b => b.useAll());
-
-  aurelia.start().then(() => aurelia.setRoot());
+  await aurelia.start();
+  aurelia.setRoot('app');
 }
