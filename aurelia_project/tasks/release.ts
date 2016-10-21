@@ -21,21 +21,22 @@ export default gulp.series(
 
 function deleteFolder() {
   return del([
-    path.join(dist, '**/*')
+    path.join(dist, '**/*'),
+    '!' + dist
   ]);
 }
 function copyRoot() {
   return gulp.src(rootFiles).pipe(gulp.dest(dist));
 }
 function copyScripts() {
-  return gulp.src(path.join('scripts', '**/*.*'))
+  return gulp.src('scripts/**/*.*')
     .pipe(gulp.dest(path.join(dist, 'scripts')));
 }
 function copyStyles() {
-  return gulp.src(path.join('styles', '**/*.*'))
+  return gulp.src('styles/**/*.*')
     .pipe(gulp.dest(path.join(dist, 'styles')));
 }
 function copyFonts() {
-  return gulp.src(path.join('fonts', '**/*.*'))
+  return gulp.src('fonts/**/*.*')
     .pipe(gulp.dest(path.join(dist, 'fonts')));
 }
